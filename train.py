@@ -1,22 +1,27 @@
-import os
-import json
-import argparse
-import ale_py
-import gymnasium as gym
-
-from stable_baselines3 import DQN
-from stable_baselines3.common.env_util import make_atari_env
+from stable_baselines3.common.callbacks import (
+    EvalCallback, CheckpointCallback, CallbackList,)
+from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env import VecFrameStack
-from stable_baselines3.common.callbacks import ( EvalCallback, CheckpointCallback, CallbackList,)
+from stable_baselines3.common.env_util import make_atari_env
+from stable_baselines3 import DQN
+import gymnasium as gym
+import ale_py
+import argparse
+import json
+import os
+
+# % % writefile train.py
 
 
 # Argument Parser
 def parse_args():
-    parser = argparse.ArgumentParser(description="Train a DQN agent on an Atari environment.")
+    parser = argparse.ArgumentParser(
+        description="Train a DQN agent on an Atari environment.")
 
     parser.add_argument("--experiment-name", type=str, default="baseline")
     parser.add_argument("--env", type=str, default="ALE/Pong-v5")
-    parser.add_argument("--policy", type=str, default="CnnPolicy", choices=["CnnPolicy", "MlpPolicy"])
+    parser.add_argument("--policy", type=str, default="CnnPolicy",
+                        choices=["CnnPolicy", "MlpPolicy"])
 
     parser.add_argument("--timesteps", type=int, default=500_000)
     parser.add_argument("--seed", type=int, default=42)
@@ -42,23 +47,18 @@ def parse_args():
     return parser.parse_args()
 
 
-# Environment
-
-def to_ram_env_id(env_name: str) -> str:
-    if "-ram" in env_name:
-        return env_name
-    if env_name.endswith("-v5"):
-        return env_name[: -len("-v5")] + "-ram-v5"
-    return env_name.replace("-v", "-ram-v")
-
-
+# Environment Setup
 def create_env(env_name, seed, policy):
     if policy == "CnnPolicy":
-        env = make_atari_env( env_name, n_envs=1, seed=seed, )
-        env = VecFrameStack(  env,  n_stack=4, )
+        env = make_atari_env(env_name, n_envs=1, seed=seed)
+        env = VecFrameStack(env, n_stack=4)
     else:
-        ram_env_name = to_ram_env_id(env_name)
-        env = make_atari_env(  ram_env_name, n_envs=1, seed=seed, )
+        env = make_vec_env(
+            env_name,
+            n_envs=1,
+            seed=seed,
+            env_kwargs={"obs_type": "ram"}
+        )
 
     return env
 
@@ -129,17 +129,20 @@ class CompactEvalCallback(EvalCallback):
         return continue_training
 
 # Training
+
+
 def train(args):
-    base_dir = "/content/drive/MyDrive/"
+    base_dir = "/kaggle/working/"
 
-    assert os.path.isdir("/content/drive/MyDrive"), (
-        "Google Drive doesn't appear to be mounted. "
-        "Run drive.mount('/content/drive') in a cell before training."
-    )
+    # assert os.path.isdir("/content/drive/MyDrive"), (
+    #     "Google Drive doesn't appear to be mounted. "
+    #     "Run drive.mount('/content/drive') in a cell before training."
+    # )
     model_dir = os.path.join(base_dir, "models", args.experiment_name)
-    log_dir = os.path.join( base_dir, "logs", args.experiment_name, )
+    log_dir = os.path.join(base_dir, "logs", args.experiment_name, )
 
-    checkpoint_dir = os.path.join(  base_dir, "checkpoints", args.experiment_name, )
+    checkpoint_dir = os.path.join(
+        base_dir, "checkpoints", args.experiment_name, )
 
     os.makedirs(model_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
@@ -156,11 +159,11 @@ def train(args):
             indent=4,
         )
 
-    env = create_env( args.env, args.seed, args.policy, )
+    env = create_env(args.env, args.seed, args.policy, )
 
-    eval_env = create_env( args.env, args.seed + 100, args.policy, )
+    eval_env = create_env(args.env, args.seed + 100, args.policy, )
 
-    model = create_model( env, args, log_dir,)
+    model = create_model(env, args, log_dir,)
 
     checkpoint_callback = CheckpointCallback(
         save_freq=args.checkpoint_freq,
@@ -179,7 +182,7 @@ def train(args):
         n_eval_episodes=10,
     )
 
-    callbacks = CallbackList( [checkpoint_callback, eval_callback,])
+    callbacks = CallbackList([checkpoint_callback, eval_callback,])
 
     try:
         model.learn(
@@ -188,7 +191,7 @@ def train(args):
             log_interval=10,
         )
 
-        model.save( os.path.join( model_dir, "dqn_model", ) )
+        model.save(os.path.join(model_dir, "dqn_model", ))
 
         print("\nTraining completed successfully!")
         print(f"Final model    : {os.path.join(model_dir, 'dqn_model.zip')}")
