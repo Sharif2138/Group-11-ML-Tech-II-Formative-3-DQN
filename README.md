@@ -1,8 +1,7 @@
 # DQN Atari — Formative 3 Assignment (Deep Q-Learning)
 
 Group project training and evaluating a Deep Q-Network (DQN) agent on an
-Atari environment using Stable-Baselines3 and Gymnasium, as specified in the
-Formative 3 assignment brief.
+Atari environment using Stable-Baselines3 and Gymnasium.
 
 **Environment used:** `ALE/Pong-v5`
 
@@ -28,10 +27,9 @@ required for submission.
 ├── train.py              # CLI training script (DQN via Stable-Baselines3)
 ├── play.py                # Loads a trained model and runs it greedily
 ├── README.md               # This file
-├── models/                # Saved models per experiment (dqn_model.zip, best_model.zip, config.json)
-├── logs/                  # TensorBoard event logs per experiment
-├── checkpoints/           # Periodic training checkpoints
-└── videos/                # Gameplay recordings from play.py (--record)
+├── models/                # Saved best model
+├── logs/                  # TensorBoard event logs for best experiment
+└── video/                # Gameplay recording from play.py (--record)
 ```
 
 ---
@@ -52,14 +50,12 @@ re-run at the start of every fresh session; locally you only need it once.
 **Local machine**
 ```bash
 git clone <this-repo-url>
-cd dqn-pong
 python train.py --experiment-name exp01 --policy CnnPolicy --lr 1e-4
 ```
 
 **Google Colab**
 ```python
 !git clone <this-repo-url>
-%cd dqn-pong
 !pip install stable-baselines3[extra] gymnasium[atari] ale-py
 !python train.py --experiment-name exp01 --policy CnnPolicy --lr 1e-4
 ```
@@ -73,7 +69,6 @@ drive.mount('/content/drive')
 **Kaggle**
 ```bash
 !git clone <this-repo-url>
-%cd dqn-pong
 !pip install stable-baselines3[extra] gymnasium[atari] ale-py
 !python train.py --experiment-name exp01 --policy CnnPolicy --lr 1e-4
 ```
