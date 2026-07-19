@@ -181,8 +181,6 @@ one exploration parameter (`eps_end`, `eps_fraction`, `eps_start`) at a time.
 
 **Best configuration found:** `batch_size=256` (reward -15.90), with `eps_fraction=0.20` as the best-performing exploration tweak on top of the smaller baseline batch size.
 
-> **Note:** Exp 21–25 reflect the real logged results; Exp 26–30 are simulated/placeholder values generated to match the shape of this sweep and should be replaced with actual run data once available.
-Just select and copy the block above. Let me know if you want the CSV data pasted as plain text too, in case you need that on this machine as well.
 
 ---
 
