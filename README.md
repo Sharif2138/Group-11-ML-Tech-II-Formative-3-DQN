@@ -9,6 +9,8 @@ Atari environment using Stable-Baselines3 and Gymnasium.
 
 [Task Sheet](https://docs.google.com/spreadsheets/d/1xX0x6CB-mCtzHbau_4U0m1TpIyv2ax4lJvvdNiSf3m4/edit?usp=sharing)
 
+[<video controls src="video.mp4" title="Title"></video>](https://github.com/user-attachments/assets/62bfc2d4-ed9f-4970-89a2-ec837497b4ca)
+
 
 **Environment used:** `ALE/Pong-v5`
 
@@ -226,7 +228,7 @@ python play.py --policy cnn --model models/final_model/best_model.zip --record -
 ---
 
 video
-<video controls src="video.mp4" title="Title"></video>
+[<video controls src="video.mp4" title="Title"></video>](https://github.com/user-attachments/assets/62bfc2d4-ed9f-4970-89a2-ec837497b4ca)
 
 
 plots
