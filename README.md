@@ -3,6 +3,9 @@
 Group project training and evaluating a Deep Q-Network (DQN) agent on an
 Atari environment using Stable-Baselines3 and Gymnasium.
 
+[Task Sheet](https://docs.google.com/spreadsheets/d/1xX0x6CB-mCtzHbau_4U0m1TpIyv2ax4lJvvdNiSf3m4/edit?usp=sharing)
+
+
 **Environment used:** `ALE/Pong-v5`
 
 **Group members and areas of experimentation:**
