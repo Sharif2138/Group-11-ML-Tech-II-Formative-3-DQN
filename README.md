@@ -222,6 +222,8 @@ python play.py --policy cnn --model models/final_model/best_model.zip --record -
 
 
 ![alt text](image.png)
+
+![alt text](image-1.png)
 ## Reproducing Everything (from scratch)
 
 1. Clone the repo and install dependencies (see **Setup** above).
