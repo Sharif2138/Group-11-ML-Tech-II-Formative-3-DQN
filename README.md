@@ -221,7 +221,11 @@ python play.py --policy cnn --model models/final_model/best_model.zip --record -
 
 ---
 
+video
+<video controls src="video.mp4" title="Title"></video>
 
+
+plots
 ![alt text](image.png)
 
 ![alt text](image-1.png)
