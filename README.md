@@ -28,12 +28,13 @@ required for submission.
 ```
 .
 ├── train.py              # CLI training script (DQN via Stable-Baselines3)
+├── plots/              # plots for final mode exp
 ├── play.py               # Loads a trained model and runs it greedily
-├──notebooks                # notebooks containing all experiments
+├──notebooks/               # notebooks containing all experiments
 ├── README.md               # This file
-├── models/                # Saved best model
-├── logs/                  # TensorBoard event logs for best experiment
-└── video/                # Gameplay recording from play.py (--record)
+├── models/                 # Saved best model
+├── play.py                # script to play game
+└── video.mp4               # Gameplay recording from play.py (--record)
 ```
 
 ---
