@@ -195,7 +195,7 @@ schedule) will be combined into a single final configuration and trained
 for **1,000,000 timesteps** — a longer budget than any individual sweep run,
 to give the best-known configuration room to fully converge.
 
-**Final configuration:** _to be filled in after combining all three members' best results_
+**Final configuration:** filled in from best configs in all exp
 
 ```bash
 python train.py \
@@ -220,6 +220,8 @@ python play.py --policy cnn --model models/final_model/best_model.zip --record -
 
 ---
 
+
+![alt text](image.png)
 ## Reproducing Everything (from scratch)
 
 1. Clone the repo and install dependencies (see **Setup** above).
@@ -243,13 +245,3 @@ python play.py --policy cnn --model models/final_model/best_model.zip --record -
    submission gameplay video.
 
 ---
-
-## Assignment Requirements Checklist
-
-- [x] `train.py` — trains a DQN agent, compares `MlpPolicy` vs `CnnPolicy`
-- [x] `play.py` — loads a trained model, runs it greedily (`deterministic=True`), renders/records gameplay
-- [x] Hyperparameter tuning across learning rate, gamma, batch size, and epsilon (10 experiments per member, 30 total)
-- [ ] Final model trained for 1,000,000 timesteps using best combined config _(pending all members' results)_
-- [ ] Gameplay video from `play.py` for submission _(pending final model)_
-- [ ] Hyperparameter table and video added to this README _(gamma and batch/exploration tables to be filled in)_
-- [ ] Group presentation slot booked with the Coach
