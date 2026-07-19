@@ -25,7 +25,8 @@ required for submission.
 ```
 .
 ├── train.py              # CLI training script (DQN via Stable-Baselines3)
-├── play.py                # Loads a trained model and runs it greedily
+├── play.py               # Loads a trained model and runs it greedily
+├──notebooks                # notebooks containing all experiments
 ├── README.md               # This file
 ├── models/                # Saved best model
 ├── logs/                  # TensorBoard event logs for best experiment
