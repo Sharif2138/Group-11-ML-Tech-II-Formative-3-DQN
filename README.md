@@ -199,7 +199,7 @@ schedule) will be combined into a single final configuration and trained
 for **1,000,000 timesteps** — a longer budget than any individual sweep run,
 to give the best-known configuration room to fully converge.
 
-**Final configuration:** lr=1.5e-4, gamma=0.97, batch_size=256, eps_fraction=0.20
+**Final configuration:** lr=1.5e-4, gamma=0.97, batch_size=384, eps_fraction=0.20
 
 ```bash
 python train.py \
