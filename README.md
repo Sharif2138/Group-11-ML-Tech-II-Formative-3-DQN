@@ -1,7 +1,4 @@
 
-
-https://github.com/user-attachments/assets/62bfc2d4-ed9f-4970-89a2-ec837497b4ca
-
 # DQN Atari — Formative 3 Assignment (Deep Q-Learning)
 
 Group project training and evaluating a Deep Q-Network (DQN) agent on an
