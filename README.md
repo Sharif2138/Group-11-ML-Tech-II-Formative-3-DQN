@@ -202,12 +202,12 @@ to give the best-known configuration room to fully converge.
 python train.py \
   --experiment-name final_model \
   --policy CnnPolicy \
-  --lr <best_lr> \
-  --gamma <best_gamma> \
-  --batch-size <best_batch_size> \
-  --eps-end <best_eps_end> \
-  --eps-fraction <best_eps_fraction> \
-  --eps-start <best_eps_start> \
+  --lr 1.5e-4 \
+  --gamma 0.97 \
+  --batch-size 256 \
+  --eps-fraction 0.20 \
+  --eps-end 0.10 \
+  --eps-start 1.0 \
   --timesteps 1000000
 ```
 
