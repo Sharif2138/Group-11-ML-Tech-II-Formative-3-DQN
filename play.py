@@ -16,6 +16,7 @@ python play.py --policy mlp --model models/mlp/dqn_model.zip
 """
 
 import argparse
+import moviepy
 import os
 import time
 import ale_py
