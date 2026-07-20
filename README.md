@@ -4,9 +4,10 @@
 Group project training and evaluating a Deep Q-Network (DQN) agent on an
 Atari environment using Stable-Baselines3 and Gymnasium.
 
-[Task Sheet](https://docs.google.com/spreadsheets/d/1xX0x6CB-mCtzHbau_4U0m1TpIyv2ax4lJvvdNiSf3m4/edit?usp=sharing)
+video demo
+https://github.com/user-attachments/assets/63111239-857b-4c14-981b-add7d381dde7
 
-[<video controls src="video.mp4" title="Title"></video>](https://github.com/user-attachments/assets/62bfc2d4-ed9f-4970-89a2-ec837497b4ca)
+[Task Sheet](https://docs.google.com/spreadsheets/d/1xX0x6CB-mCtzHbau_4U0m1TpIyv2ax4lJvvdNiSf3m4/edit?usp=sharing)
 
 
 **Environment used:** `ALE/Pong-v5`
@@ -224,7 +225,10 @@ python play.py --policy cnn --model <location for your model> --record --episode
 ---
 
 video
-[<video controls src="video.mp4" title="Title"></video>](https://github.com/user-attachments/assets/62bfc2d4-ed9f-4970-89a2-ec837497b4ca)
+
+https://github.com/user-attachments/assets/63111239-857b-4c14-981b-add7d381dde7
+
+
 
 
 plots
