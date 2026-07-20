@@ -4,7 +4,6 @@
 Group project training and evaluating a Deep Q-Network (DQN) agent on an
 Atari environment using Stable-Baselines3 and Gymnasium.
 
-video demo
 https://github.com/user-attachments/assets/63111239-857b-4c14-981b-add7d381dde7
 
 [Task Sheet](https://docs.google.com/spreadsheets/d/1xX0x6CB-mCtzHbau_4U0m1TpIyv2ax4lJvvdNiSf3m4/edit?usp=sharing)
