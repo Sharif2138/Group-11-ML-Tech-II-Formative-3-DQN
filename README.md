@@ -207,7 +207,7 @@ python train.py \
   --policy CnnPolicy \
   --lr 1.5e-4 \
   --gamma 0.97 \
-  --batch-size 256 \
+  --batch-size 384 \
   --eps-fraction 0.10 \
   --eps-end 0.10 \
   --eps-start 1.0 \
