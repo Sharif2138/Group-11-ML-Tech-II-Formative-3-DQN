@@ -45,7 +45,7 @@ required for submission.
 ## Setup
 
 ```bash
-pip install stable-baselines3[extra] gymnasium[atari] ale-py
+pip install stable-baselines3[extra] gymnasium[atari] ale-py movie.py
 ```
 
 This works identically on a local machine, Google Colab, and Kaggle.
@@ -186,7 +186,7 @@ one exploration parameter (`eps_end`, `eps_fraction`, `eps_start`) at a time.
 
 **Key insight:** batch size drove the largest single improvement in this group — reward rose steadily and monotonically from batch=16 to batch=256, unlike gamma which peaked and reversed. Among the exploration parameters, moving *away* from the extremes helped: a higher `eps_end` (0.10) and a longer `eps_fraction` (0.20) both beat their respective baselines, while lowering `eps_start` below 1.0 only hurt performance — this agent benefits from starting fully random and keeping a modest floor of randomness throughout training, rather than decaying exploration away completely.
 
-**Best configuration found:** `batch_size=256` (reward -15.90), with `eps_fraction=0.20` as the best-performing exploration tweak on top of the smaller baseline batch size.
+**Best configuration found:** `batch_size=384` (reward -15.90), with `eps_fraction=0.20` as the best-performing exploration tweak on top of the smaller baseline batch size.
 
 
 ---
@@ -214,12 +214,11 @@ python train.py \
   --timesteps 1000000
 ```
 
-This final model's `dqn_model.zip` (or `best_model.zip`, whichever scores
-higher under evaluation) is what will be loaded by `play.py` to produce the
-gameplay video required for submission.
+This final model's  `best_model.zip`,  is  loaded by `play.py` to produce the
+gameplay video .
 
 ```bash
-python play.py --policy cnn --model models/final_model/best_model.zip --record --episodes 5
+python play.py --policy cnn --model <location for your model> --record --episodes 5
 ```
 
 ---
