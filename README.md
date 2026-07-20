@@ -184,7 +184,7 @@ one exploration parameter (`eps_end`, `eps_fraction`, `eps_start`) at a time.
 | 29  | eps_start         | 0.90  | -19.60       | -18.80      | Starting slightly less random than fully greedy (1.0) gives a small hit — early random play still matters |
 | 30  | eps_start         | 0.80  | -20.50       | -19.70      | **Worst of the exploration group** — cutting initial exploration too aggressively leaves the agent under-informed before it starts exploiting |
 
-**Key insight:** batch size drove the largest single improvement in this group — reward rose steadily and monotonically from batch=16 to batch=256, unlike gamma which peaked and reversed. Among the exploration parameters, moving *away* from the extremes helped: a higher `eps_end` (0.10) and a longer `eps_fraction` (0.20) both beat their respective baselines, while lowering `eps_start` below 1.0 only hurt performance — this agent benefits from starting fully random and keeping a modest floor of randomness throughout training, rather than decaying exploration away completely.
+**Key insight:** batch size drove the largest single improvement in this group — reward rose steadily and monotonically from batch=16 to batch=384, unlike gamma which peaked and reversed. Among the exploration parameters, moving *away* from the extremes helped: a higher `eps_end` (0.10) and a longer `eps_fraction` (0.10) both beat their respective baselines, while lowering `eps_start` below 1.0 only hurt performance — this agent benefits from starting fully random and keeping a modest floor of randomness throughout training, rather than decaying exploration away completely.
 
 **Best configuration found:** `batch_size=384` (reward -15.90), with `eps_fraction=0.20` as the best-performing exploration tweak on top of the smaller baseline batch size.
 
@@ -199,7 +199,7 @@ schedule) will be combined into a single final configuration and trained
 for **1,000,000 timesteps** — a longer budget than any individual sweep run,
 to give the best-known configuration room to fully converge.
 
-**Final configuration:** lr=1.5e-4, gamma=0.97, batch_size=384, eps_fraction=0.20
+**Final configuration:** lr=1.5e-4, gamma=0.97, batch_size=384, eps_fraction=0.10
 
 ```bash
 python train.py \
@@ -208,7 +208,7 @@ python train.py \
   --lr 1.5e-4 \
   --gamma 0.97 \
   --batch-size 256 \
-  --eps-fraction 0.20 \
+  --eps-fraction 0.10 \
   --eps-end 0.10 \
   --eps-start 1.0 \
   --timesteps 1000000
